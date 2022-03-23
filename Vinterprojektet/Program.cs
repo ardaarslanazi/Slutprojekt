@@ -2,6 +2,7 @@
 using Raylib_cs;
 using System.Numerics;
 using System.Threading;
+using System.Collections.Generic;
 namespace Vinterprojektet
 {
     class Program
@@ -9,74 +10,76 @@ namespace Vinterprojektet
         static void Main(string[] args)
 
         {
-            Raylib.InitWindow(1300, 900, "Gamestate testing");
-
+            //timer intet
+            float timer = 0;
+            Raylib.InitWindow(900, 600, "Gamestate testing");
+            //target fps på 60
+            Raylib.SetTargetFPS(60);
+            // bilder
             Texture2D bakgrund = Raylib.LoadTexture("bakgrund.png");
             Texture2D meny = Raylib.LoadTexture("menusanta.png");
 
-
             Random generator = new Random();
-            Barn Barn1 = new Barn();
-            speed speed1 = new speed();
-            gift gift1 = new gift();
-            Barn1.barnX = generator.Next(0, 1300);
-            Barn1.barnY = generator.Next(0, 900);
-            gift1.giftX = generator.Next(100, 800);
-            Barn1.barnX = Barn1.barnX + speed1.speedx;
-            Timer t = new Timer(TimerCallback, null, 0, 1000);
-            int scene = 0;
-            static void TimerCallback(Object o)
-            {
-                Console.WriteLine("In TimerCallback: " + DateTime.Now);
-            }
+
+            //barn listan där barn ska adderas
+            List<Barn> barnList = new List<Barn>();
+
+            barnList.Add(new Barn());
+
+
+
+
+
+
+            int scene = 1;
 
             while (!Raylib.WindowShouldClose())
             {
 
+                //timer är = frametime
+                timer += Raylib.GetFrameTime();
+
+                // om timern = 3 lägg till en barn i listan och den kommer att placeras någonstans random
+                if (timer >= 3)
+                {
+                    barnList.Add(new Barn());
+                    timer = 0;
+                }
 
                 Raylib.BeginDrawing();
-
-                if (scene == 0)
-                {
-
-                    Raylib.DrawTexture(meny, 0, 0, Color.WHITE);
-                }
 
                 if (scene == 1)
                 {
 
                     Raylib.DrawTexture(bakgrund, 0, 0, Color.WHITE);
 
-                    //Äckel barnjävel spawn
-                    Raylib.DrawTextureEx(Barn1.barnbild, new Vector2(Barn1.barnX, Barn1.barnY), 0, 0.20f, Color.WHITE);
-                    Barn1.barnX = Barn1.barnX + speed1.speedx;
-                    Barn1.barnY = Barn1.barnY + speed1.speedy;
+                    // för varje barn man har i listan kör den metoden
+                    foreach (var item in barnList)
+                    {
+                        //skapa en barnspeed metod för listan
+                        item.Barnspeed();
+                        Barn barn1 = new Barn();
+
+                        if (barn1.invisibility == true)
+                        {
+
+                            barnList.Remove(barn1);
 
 
-                    if (Barn1.barnX >= 900)
-                    {
-                        speed1.speedx = speed1.speedx * -1;
+                        }
+
+
+
+
                     }
 
-                    if (Barn1.barnX <= 0)
-                    {
-                        speed1.speedx = speed1.speedx + 1;
-                    }
-                    if (Barn1.barnY >= 600)
-                    {
-                        speed1.speedy = speed1.speedy * -1;
-                    }
 
-                    if (Barn1.barnY <= 0)
-                    {
-                        speed1.speedy = speed1.speedy * -1;
-                    }
                 }
 
 
 
 
-                // Raylib.DrawTexture(Barn.barnbild,)
+
 
 
                 Raylib.EndDrawing();
