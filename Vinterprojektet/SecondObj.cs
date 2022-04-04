@@ -8,13 +8,10 @@ namespace Vinterprojektet
         static Random generator = new Random();
 
 
-
-
-
         Texture2D secondPic = Raylib.LoadTexture("bird.png");
 
         public Boolean invisibility2 = false;
-
+        // samma kod som på firstOBj fast med fågeln.
         public void SpawnObj2()
         {
 

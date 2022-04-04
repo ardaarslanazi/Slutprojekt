@@ -53,7 +53,7 @@ namespace Vinterprojektet
 
                 if (scene == 1)
                 {
-
+                    //om timer är större eller lika med 3 samt scene är lika med 1 lägg till en ny bebis i listan
                     if (timer >= 3 && scene == 1)
                     {
                         firstList.Add(new First());
@@ -79,7 +79,7 @@ namespace Vinterprojektet
 
                 }
 
-
+                // samma sak som scene 1 fast med fågeln
                 if (scene == 2)
                 {
                     Raylib.ClearBackground(Color.WHITE);
