@@ -49,10 +49,12 @@ namespace Vinterprojektet
 
                 Raylib.BeginDrawing();
 
+
+
                 if (scene == 1)
                 {
 
-                    if (timer >= 3)
+                    if (timer >= 3 && scene == 1)
                     {
                         firstList.Add(new First());
                         timer = 0;
