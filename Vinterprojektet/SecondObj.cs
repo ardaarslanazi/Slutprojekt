@@ -3,7 +3,7 @@ using Raylib_cs;
 
 namespace Vinterprojektet
 {
-    public class SecondObj : FirstObj
+    public class Second : First
     {
         static Random generator = new Random();
 

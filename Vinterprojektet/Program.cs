@@ -23,13 +23,13 @@ namespace Vinterprojektet
             Random generator = new Random();
 
             //barn listan där barn ska adderas
-            List<FirstObj> firstList = new List<FirstObj>();
+            List<First> firstList = new List<First>();
 
-            firstList.Add(new FirstObj());
+            firstList.Add(new First());
 
-            List<SecondObj> secondList = new List<SecondObj>();
+            List<Second> secondList = new List<Second>();
 
-            secondList.Add(new SecondObj());
+            secondList.Add(new Second());
 
 
 
@@ -54,7 +54,7 @@ namespace Vinterprojektet
 
                     if (timer >= 3)
                     {
-                        firstList.Add(new FirstObj());
+                        firstList.Add(new First());
                         timer = 0;
                     }
 
@@ -86,7 +86,7 @@ namespace Vinterprojektet
                     // Raylib.DrawTexture(background2, 0, 0, Color.WHITE);
                     if (timer >= 3)
                     {
-                        secondList.Add(new SecondObj());
+                        secondList.Add(new Second());
                         timer = 0;
                     }
                     foreach (var item in secondList)

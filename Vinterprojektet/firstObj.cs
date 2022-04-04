@@ -6,7 +6,7 @@ using System.Threading;
 namespace Vinterprojektet
 {
     // barn specs allt ifrån position till hastighet
-    public class FirstObj
+    public class First
     {
 
         public int posX = generator.Next(100, 900);
