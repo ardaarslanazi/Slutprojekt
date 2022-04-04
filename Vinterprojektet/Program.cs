@@ -12,19 +12,24 @@ namespace Vinterprojektet
         {
             //timer intet
             float timer = 0;
-            Raylib.InitWindow(900, 600, "Gamestate testing");
+            Raylib.InitWindow(900, 600, "abortion Clinic");
             //target fps på 60
             Raylib.SetTargetFPS(60);
             // bilder
-            Texture2D bakgrund = Raylib.LoadTexture("bakgrund.png");
-            Texture2D meny = Raylib.LoadTexture("menusanta.png");
+            Texture2D background = Raylib.LoadTexture("bakgrund.png");
+            Texture2D background2 = Raylib.LoadTexture("background.png");
+            Texture2D menu = Raylib.LoadTexture("menusanta.png");
 
             Random generator = new Random();
 
             //barn listan där barn ska adderas
-            List<Barn> barnList = new List<Barn>();
+            List<FirstObj> firstList = new List<FirstObj>();
 
-            barnList.Add(new Barn());
+            firstList.Add(new FirstObj());
+
+            List<SecondObj> secondList = new List<SecondObj>();
+
+            secondList.Add(new SecondObj());
 
 
 
@@ -40,40 +45,61 @@ namespace Vinterprojektet
                 timer += Raylib.GetFrameTime();
 
                 // om timern = 3 lägg till en barn i listan och den kommer att placeras någonstans random
-                if (timer >= 3)
-                {
-                    barnList.Add(new Barn());
-                    timer = 0;
-                }
+
 
                 Raylib.BeginDrawing();
 
                 if (scene == 1)
                 {
 
-                    Raylib.DrawTexture(bakgrund, 0, 0, Color.WHITE);
+                    if (timer >= 3)
+                    {
+                        firstList.Add(new FirstObj());
+                        timer = 0;
+                    }
+
+                    Raylib.DrawTexture(background, 0, 0, Color.WHITE);
 
                     // för varje barn man har i listan kör den metoden
-                    foreach (var item in barnList)
+                    foreach (var item in firstList)
                     {
                         //skapa en barnspeed metod för listan
-                        item.Barnspeed();
-                        Barn barn1 = new Barn();
-
-                        if (barn1.invisibility == true)
-                        {
-
-                            barnList.Remove(barn1);
-
-
-                        }
-
-
-
+                        item.SpawnObj();
 
                     }
 
+                    firstList.RemoveAll(b => b.invisibility == true);
+                    if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE))
+                    {
+                        scene = 2;
 
+                    }
+
+                }
+
+
+                if (scene == 2)
+                {
+                    Raylib.ClearBackground(Color.WHITE);
+
+                    Raylib.DrawTexture(background2, 0, 0, Color.WHITE);
+                    // Raylib.DrawTexture(background2, 0, 0, Color.WHITE);
+                    if (timer >= 3)
+                    {
+                        secondList.Add(new SecondObj());
+                        timer = 0;
+                    }
+                    foreach (var item in secondList)
+                    {
+                        item.SpawnObj2();
+                    }
+                    secondList.RemoveAll(c => c.invisibility2 == true);
+
+                    if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE))
+                    {
+                        scene = 2;
+
+                    }
                 }
 
 
