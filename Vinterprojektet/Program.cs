@@ -1,10 +1,8 @@
 ﻿
 using System;
 using Raylib_cs;
-using System.Numerics;
-using System.Threading;
 using System.Collections.Generic;
-using System.Media;
+
 
 
 
@@ -32,7 +30,7 @@ namespace Vinterprojektet
 
             Random generator = new Random();
 
-            //barn listan där barn ska adderas
+            //objekt listan där objekt ska adderas
             List<First> firstList = new List<First>();
 
             firstList.Add(new First());
@@ -68,7 +66,7 @@ namespace Vinterprojektet
                 //timer är = frametime
                 timer += Raylib.GetFrameTime();
 
-                // om timern = 3 lägg till en barn i listan och den kommer att placeras någonstans random
+                // om timern = 3 lägg till en objekt i listan och den kommer att placeras någonstans random
 
 
                 Raylib.BeginDrawing();
@@ -110,7 +108,7 @@ namespace Vinterprojektet
                 if (scene == 2)
                 {
 
-                    //om timer är större eller lika med 3 samt scene är lika med 1 lägg till en ny bebis i listan
+                    //om timer är större eller lika med 3 samt scene är lika med 1 lägg till en ny objekt i listan
                     if (timer >= 1 && scene == 2)
                     {
                         firstList.Add(new First());
@@ -123,13 +121,11 @@ namespace Vinterprojektet
 
 
 
-                    // för varje barn man har i listan kör den metoden
+                    // för varje objekt man har i listan kör den metoden
                     foreach (var item in firstList)
                     {
                         //skapa en object metod för listan
                         item.SpawnObj();
-
-
 
                     }
 
@@ -150,7 +146,7 @@ namespace Vinterprojektet
 
                 }
 
-                // samma sak som scene 1 fast med fågeln
+                // samma sak som scene 1 fast med objekt
                 if (scene == 3)
                 {
                     Raylib.ClearBackground(Color.WHITE);
@@ -167,7 +163,7 @@ namespace Vinterprojektet
                         item.SpawnObj2();
 
                     }
-                    // ta bort fågeln från listan
+                    // ta bort objekt från listan
                     secondList.RemoveAll(c => c.invisibility2 == true);
 
                     if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE))
