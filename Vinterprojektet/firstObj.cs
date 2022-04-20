@@ -19,6 +19,7 @@ namespace Vinterprojektet
 
 
 
+
         //barn specs och if sats om att kunna ta bort den
 
         public void SpawnObj()
@@ -39,14 +40,7 @@ namespace Vinterprojektet
             if (mouseX >= posX && mouseX < posX + 88 && mouseY >= posY && posY < posY + 80 && Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
             {
 
-
-
-
                 invisibility = true;
-
-
-
-
 
             }
 

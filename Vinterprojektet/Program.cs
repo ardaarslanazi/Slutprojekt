@@ -90,8 +90,8 @@ namespace Vinterprojektet
                 {
                     scene = 3;
                 }
-     
-                  // meny
+
+                // meny
                 if (scene == 0)
                 {
                     Raylib.DrawTexture(menu, 0, 0, Color.WHITE);
@@ -111,7 +111,7 @@ namespace Vinterprojektet
                 {
 
                     //om timer är större eller lika med 3 samt scene är lika med 1 lägg till en ny bebis i listan
-                    if (timer >= 3 && scene == 1)
+                    if (timer >= 1 && scene == 2)
                     {
                         firstList.Add(new First());
 
@@ -122,7 +122,7 @@ namespace Vinterprojektet
 
 
 
-           
+
                     // för varje barn man har i listan kör den metoden
                     foreach (var item in firstList)
                     {
@@ -157,7 +157,7 @@ namespace Vinterprojektet
 
                     Raylib.DrawTexture(background2, 0, 0, Color.WHITE);
                     // Raylib.DrawTexture(background2, 0, 0, Color.WHITE);
-                    if (timer >= 3)
+                    if (timer >= 1)
                     {
                         secondList.Add(new Second());
                         timer = 0;
@@ -165,6 +165,7 @@ namespace Vinterprojektet
                     foreach (var item in secondList)
                     {
                         item.SpawnObj2();
+
                     }
                     // ta bort fågeln från listan
                     secondList.RemoveAll(c => c.invisibility2 == true);
